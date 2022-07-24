@@ -8,5 +8,8 @@
 
 // Geralmente os modulos são as entidades da nossa aplicação.
 
-// Vamos fazer os relacionamentos dentro do sequelize, preparando o nosso projeto para que a gente possa desenvolver e usar os nossos relacionamentos que existem quando estamos trabalhando com um banco de dados.
-// Vamos fazer o relacionamento entre tabelas, primeiro vamos fazer o relacionamento de 1 para m
+/*
+ Vamos fazer os relacionamentos dentro do sequelize, preparando o nosso projeto para que a gente possa desenvolver e usar os nossos relacionamentos que existem quando estamos trabalhando com um banco de dados.
+  Vamos fazer o relacionamento entre tabelas, entidades primeiro vamos fazer o relacionamento de 1 para N
+  Fazendo o relacionamento entre entidades, de N para N
+*/

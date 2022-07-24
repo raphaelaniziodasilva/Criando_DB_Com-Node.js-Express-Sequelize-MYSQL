@@ -9,7 +9,7 @@ const Produtos = require("../models/Produtos")
 */
 
 // vou importar a partir do meu objeto que esta sendo exportado la no index.js
-const { Produtos, Fabricantes } = require("../models/index")
+const { Produtos, Fabricantes, Categorias } = require("../models/index")
 
 const produtoControler = {
 
@@ -22,7 +22,9 @@ const produtoControler = {
 
      // vamos precisar adicionar a chave estrangeira fabricante_id a estrutura de cadastrar produto para ter acesso e dizer que esse produto pertence a um fabricante
 
-        const {nome, preco, quantidade, fabricante_id}  = req.body
+     // Vamos utilizar a função: set que ela vai setar uma informação la dentro, categorias_id
+
+        const {nome, preco, quantidade, fabricante_id, categorias_id}  = req.body
 
         // se estamos querendo cadastrar um produto dentro do nosso banco de dados a partir do nosso modelo o sequelize vai dar uma função chamada Create, passando o objeto para create ela vai cadastrar essa estrutura
 
@@ -35,9 +37,16 @@ const produtoControler = {
             fabricante_id // chave estrangeira: foreignkey
         })
 
-        res.json(novoProduto) // a resposta esta sendo enviado para o insomnia
+           // Vamos utilizar a função: set que ela vai setar uma informação aqui dentro, categorias_id
+           // pesquisando a categoria pelo banco
+           const categoria = await Categorias.findByPk(categorias_id) 
 
-        // va para o insomnia e crie uma estrutura com o nome de cadastrar produto do tipo post
+           // setando a categoria
+           await novoProduto.setCategorias(categoria)
+
+           res.json(novoProduto) // a resposta esta sendo enviado para o insomnia
+
+            // va para o insomnia e crie uma estrutura com o nome de cadastrar produto do tipo post
     },
 
 
@@ -52,7 +61,11 @@ const produtoControler = {
 
         const listaDeProdutos = await Produtos.findAll(
             {
-                include: Fabricantes // precisamos importar o model
+                // Para acessar as informações do fabricante vamos incluir o Fabricante
+                // include: Fabricantes, // precisamos importar o model
+
+                // Para acessar as informações da categoria vamos incluir a Categoria
+                include: Categorias
             }
         ) // vai procurar todos os produtos 
 
