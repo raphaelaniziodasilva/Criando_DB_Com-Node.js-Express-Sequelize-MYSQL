@@ -8,6 +8,9 @@ const CategoriaProduto = require("./CategoriaProduto")
 const Categorias = require("./Categorias")
 const Fabricantes = require("./Fabricantes")
 const Produtos = require("./Produtos")
+const Usuarios = require("./Usuarios")
+
+
 
 // Fazendo o relacionamento de 1 para N Produtos com Fabricantes, sabemos que produtos ele pertence a um fabricantes
 Produtos.belongsTo(Fabricantes, {
@@ -48,7 +51,8 @@ Categorias.belongsToMany(Produtos, {
 module.exports = {
     Fabricantes,
     Produtos,
-    Categorias
+    Categorias,
+    Usuarios
 
     // vamos importar essas informações la no controllers.js
 }   
