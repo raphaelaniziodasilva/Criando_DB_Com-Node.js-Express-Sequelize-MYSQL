@@ -10,7 +10,7 @@
 
 // crie uma pasta com o nome scr ou outro nome para organizar os seu projeto e faça a distribuição das outras pastas com os arquivos dentro neste caso vou usar o views, models e controllers e conforme o projeto for criado outras pastas iram surgir
 
-// para começar a nossa aplicação precisamos criar um arquivo principal usando o nome do arquivo.js neste caso usamos o app.js que vai estar na pasta de views
+// para começar a nossa aplicação precisamos criar um arquivo principal servidor usando o nome do arquivo.js neste caso usamos o app.js
 
 // Vamos instalar o Nodemoon: O Nodemoon e um pacote que agente instala dentro do nosso projeto
 

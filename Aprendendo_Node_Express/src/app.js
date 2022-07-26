@@ -5,6 +5,10 @@ const express = require("express")
 // importando rotas aqui! essas rotas vem da pasta routes arquivo index.js
 const routes = require("./routes/index")
 
+/* importando resquestLog para colocar ele de forma global para que ele possa ser acessado por todas as rotas, agora vou colocar ele antes do app.use(routes)
+const requestLog = require("./middlewares/requestLog")
+*/
+
 // importanto o banco de dados database
 const db = require("./database/index")
 
@@ -16,6 +20,10 @@ db.hasConection();
 
 // ativando a estrutura json pelo post para converter o nosso servidor. Essa estrutura precisar ser antes das rotas
 app.use(express.json())
+
+/* agora a resquestLog pode ser acessado por todas as rotas
+app.use(requestLog)
+*/
 
 // pedindo para o servidor usar as rotas externas que foram criadas em outros arquivos
 app.use(routes)
