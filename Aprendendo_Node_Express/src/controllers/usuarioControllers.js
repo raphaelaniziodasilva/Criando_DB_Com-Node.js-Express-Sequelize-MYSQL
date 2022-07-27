@@ -37,12 +37,9 @@ const usuariosControler = {
         No site do joy, Joy.dev e aonde tem toda a estrutura de como a gente pode validar cada coisa em si, porém precisamos primeiro montar a estrutura de validação, temos que instalar o Express validation que ja vem com o Joy junto
 
         Vamos ter que instalar na nossa maquina o Express validation que ja vem com o Joy: use a linha de comando: npm i express-validation --save  
-
         */
 
     } 
-
-
 }
 
 //  exportando o objeto 

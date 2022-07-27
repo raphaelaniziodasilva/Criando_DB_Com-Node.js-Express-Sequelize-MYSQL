@@ -9,6 +9,9 @@ const routes = require("./routes/index")
 const requestLog = require("./middlewares/requestLog")
 */
 
+// importando a validção de erro aonde vai capturar qualque tipo de erro, agora vamos colocar ele depois da app.use(routes)
+const handleErro = require("./middlewares/handleErro")
+
 // importanto o banco de dados database
 const db = require("./database/index")
 
@@ -27,6 +30,9 @@ app.use(requestLog)
 
 // pedindo para o servidor usar as rotas externas que foram criadas em outros arquivos
 app.use(routes)
+
+// validação de erro
+app.use(handleErro)
 
 // ativar um servidor: vamos dizer para o servidor qual porta que ele esta rodando porta: 3000 para que ele possa receber as requisições que vai vir do lado do cliente (client side)
 app.listen(3000, () => console.log("Servidor rodando na porta 3000"))
