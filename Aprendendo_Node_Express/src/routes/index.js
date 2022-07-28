@@ -11,6 +11,8 @@ const produtoControler = require("../controllers/protudosControllers")
 // importando o usuariosControler que esta no arquivo usuarioControllers.js
 const usuariosControler = require("../controllers/usuarioControllers")
 
+const loginControler = require("../controllers/loginControllers")
+
 // importando resquestLog para colocar ele de forma local e insira a resquestLog dentro da rota desejada para dizer qual rota ela esta acessando
 const requestLog = require("../middlewares/requestLog")
 
@@ -19,6 +21,9 @@ const bloqueio = require("../middlewares/bloqueio")
 
 // importando a validação de usuarios para colocar ele de forma local, insira o usuarioCreateValidation dentro da rota desejada antes do controller para poder validar as informações
 const usuarioCreateValidation = require("../validations/usuarios/creat")
+
+// importando a validação de usuarios para colocar ele de forma local, insira o usuarioCreateValidation dentro da rota desejada antes do controller para poder validar as informações
+const loginCreateValidation = require("../validations/login/login")
 
 // ativar o recurso de rotas para poder criar novas rotas neste arquivo
 const routes = express.Router() 
@@ -40,6 +45,9 @@ routes.put("/produtos/:id", produtoControler.atualizarProduto)
 // VAMOS FAZER O REGISTRO DE USUARIOS para que a gente possa validar e dar essas informações para quem estiver consumindo a Api
 // criar uma rota para registrar usauarios usaremos o metodo post: chamando o nosso usuariosControler e acessando o metodo registro
 routes.post("/usuarios", requestLog, usuarioCreateValidation, usuariosControler.registro)
+
+// criar uma rota para efetuar login usaremos o metodo post: chamando o nosso loginControler e acessando o metodo login
+routes.post("/login", loginCreateValidation, loginControler.login )
 
 
 // Vamos exportar o modulo para depois usar dentro do app.js, vamos exportar todas as rotas depois, conforme forem criadas la no app.js

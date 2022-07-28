@@ -1,6 +1,6 @@
 // Aqui vamos fazer a validação dos dados do usuario
 
-// precisamos importar duas coisas do express-validation, uma função chamada validate, e a blibioteca Joi para poder validar, e ela que vai poder validar
+// precisamos importar duas coisas do express-validation, uma função chamada validate, e a blibioteca Joi para poder validar, e ela que vai validar
 const {validate, Joi} = require("express-validation")
 
 // vamos exportar a estrutura de validação, validate passando um objeto de configuração, onde vamos ter toda a estrutura para conseguir validar as informações
@@ -12,7 +12,7 @@ module.exports = validate({
     */
     body: Joi.object({ // vai montar um objeto de validação para o body receber
 
-        // precisamos do campo nome para o usuario digitar e ele vai ter uma validação obrigatorias
+        // precisamos dos    campo para o usuario digitar e ele vai ter uma validação obrigatorias
 
         nome: Joi.string().required(),
         email: Joi.string().email().required(),

@@ -74,7 +74,20 @@ const produtoControler = {
         // va para o insomnia e crie uma estrutura com o nome de listar produto do tipo get
     },
 
+    //listar psicologo pelo id e devolver um objeto com todas as informações
+    async showProdutos (req, res){
+        try {
+            const findProdutos = await Produtos.findAll({
+            where: {
+                id: req.params.id
+            }})
 
+            res.status(200).json(findPsicologo);
+        } catch (err) {
+            res.status(404).json("Id não encontrado")
+        }
+    },
+    
     // vamos deletar produtos que ja foram cadastrados, vamos usar a função assincrona
     async deletarProduto (req, res) {
 
