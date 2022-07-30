@@ -14,6 +14,12 @@ Vamos criar uma rota de login na pasta de rotas
 // importando a tabela de Usuarios que esta na pasta models esta sendo exportado no index
 const { Usuarios } = require("../models/index")
 
+// importando o JWT, que vai ter um metodo chamado Sign in para a gente poder logar
+const jwt = require("jsonwebtoken")
+
+// importando a secret
+const secret = require("../configs/secret")
+
 // importando o bcrypt para usar com a senha criptografada
 const bcrypt = require("bcryptjs")
 
@@ -27,7 +33,6 @@ const loginControler = {
 
     // criando o metodo de login para que o usuario consiga se conectar
     async login (req, res) {
-
         // recebendo o email e a senha para efetuar o login
         const {email, senha} = req.body
 
@@ -55,10 +60,68 @@ const loginControler = {
             return res.status(401).json("Senha invalida")
         }
 
-        // para saber se o login ja esta funcionando
+        /* para saber se o login ja esta funcionando
         return res.json("Logado")
+        */
+
+        /* O login ja esta funcionando certinho. A diferença e que quando a gente ta fazendo processo de login em uma API eu preciso devolver um token, lembre-se que as nossas API não podem guardar nehum estado.
+
+        Elas não podem saber quem é o usuario em si nas proximas requests.
+
+        O usuario tem sempre que se identificar em cada request que ele vai fazer.
+
+        Para não ter que ficar fazendo o login toda hora a gente cria um código token que vamos enviar paa ele.
+
+        E quem fica resposanvel de usar isso é o Json web Token. Que é o JWT, que e uma das alternativas, uma das indicações segurança para autenticação mais famosa que tem no mundo de desenvolvimento.
+
+        Geralmente e com os mais comuns que a gente tem, precisamos conhecer sobre o Json web token o JWT.
+
+        Instalando o son web token o JWT va para o terminal e use a linha de comando: npm install jsonwebtoken
+
+        Então o Json web token que vai nos ajudar a criar essa estrutura, a primeira coisa que precisamos fazer é ter uma chave de segurança. 
+
+        Ele vai usar essa chave para quando ele criptografar esse token, ele poder voltar, diferente do bcrypt uma vez que ele e criptografado, ele não consegue saber qual era o dado originais. Nesse caso o Jwt, a gente sabe qual e os dados que tem dentro desse token porque no final das contas estava gerando o hash.
+
+        E para esse hash ficar seguro, a gente gera uma chave de segurança nossa, que a gente tem que informar pra ele que ele vai misturar essa chave com a senha ou aquela informação que agente está colocando dentro desse token para ficar facil.
+
+        Vamos criar uma nova pasta chamada config e dentro dessa pasta criar um arquivo chamado secret.js
+        */
+
+        // Se a senha estiver certa 
+        const token = jwt.sign(
+            {
+            // aqui dentro vamos passar duas coisas, primeiro o que vamos chamar de Payload, que é o conteudo que eu quero que seja salvo dentro desse token. Geralmente a gente põe as informações do usuario, para poder ter acesso para alguma coisa que a gente precise utilizar.
+
+            // salvei essas tres informações, que é importante para saber quando ele me envia um token, de quem e esse token e do que se trata
+            id: usuario.id,
+            email: usuario.email,
+            nome: usuario.nome            
+        },
+           // segundo a nossa secret que esta pronta dentro da nossa pasta config, vamos importa esse secret pra ca e salvar corrretamente as informações aqui. 
+           secret.key
+
+           // com isso o JWT vai gerar um token aqui para a gente. E esse token a gente vai devolver como resposta da nossa estrutura de quando ele se logar, eu não vou devolver logado mas eu vou devolver um token que foi gerado para o usuario
+
+        )
+
+        // devolver o token que foi gerado para o usuario
+        return res.json(token)
+
+        /* Agora que a gente ja esta passando o token vamos precisar ver se a gente vai receber esse token de fato
+
+        Vamos para o insomnia na estrutura do login e ver se recebemos esse token, e justamente esse token que vai carregar todas as informações que a gente colocou, e esse token que o usuario vai ter que mandar em todas as requests que ele quiser utilizar, todas aquelas que vai deixar privadas.
+
+        Somente uma pessoa autenticada vai poder cadastrar os produto, para isso vamos ter que informar o token que foi gerado no insomnia.
+
+        Para a gente poder criar esse midlleware que vai validar se exite o token e se ele está valido, vamos usar o express-jwt ele vai gerar um secret pra gente ou melhor, um midlleware que vai validar se existe ou não esse usuario e se ele esta valido ou não 
+
+        Para instalar o express-jwt use a linha de cmando: npm install express-jwt porém use a 5.3.1 --> npm install express-jwt@5.3.1
+
+        Com o express-jwt instalado vamos precisar configurar o middleware, va para a pasta de middlware e crie um arquivo chamando auth.js agora monte a estrutura  
+        */
     }
 }
+
 // exportando loginControler
 module.exports = loginControler
 

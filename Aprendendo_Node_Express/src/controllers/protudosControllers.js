@@ -13,16 +13,19 @@ const { Produtos, Fabricantes, Categorias } = require("../models/index")
 
 const produtoControler = {
 
-     // cadastrar produtos: vamos precisar das informações que vai ser o nome, preco e quantidade que esta na tabela do MSQL ou na pasta models no arquivo produto.js.
+        // cadastrar produtos: vamos precisar das informações que vai ser o nome, preco e quantidade que esta na tabela do MSQL ou na pasta models no arquivo produto.js.
 
-     // toda a requisição dentro do banco de dados, toda operação do nosso banco de dados ela e uma funão assíncrona vou precisar utilizar o "async await"
-     async cadastrarProduto(req, res) {
+        // toda a requisição dentro do banco de dados, toda operação do nosso banco de dados ela e uma funão assíncrona vou precisar utilizar o "async await"
+        async cadastrarProduto(req, res) {
 
-     // vamos desestruturar o nosso objeto body para ficar mais facil de lidar com essas informações, a partir do req body eu vou retirar essas informações que eu recebi na minha request
+        // vamos pegar os dados do usuario que esta realmente cadastrando do token, vai pegar todo o payload que fizemos dentro do jwt e vai deixar dentro dessa propriedade user que geralmente e o de autenticação que a gente esta utilizando, e vamos ter acesso acesso as informações que esta dentro do nosso jwt que enviamos para fazer essa request
+        console.log(req.user)
 
-     // vamos precisar adicionar a chave estrangeira fabricante_id a estrutura de cadastrar produto para ter acesso e dizer que esse produto pertence a um fabricante
+        // vamos desestruturar o nosso objeto body para ficar mais facil de lidar com essas informações, a partir do req body eu vou retirar essas informações que eu recebi na minha request
 
-     // Vamos utilizar a função: set que ela vai setar uma informação la dentro, categorias_id
+        // vamos precisar adicionar a chave estrangeira fabricante_id a estrutura de cadastrar produto para ter acesso e dizer que esse produto pertence a um fabricante
+
+        // Vamos utilizar a função: set que ela vai setar uma informação la dentro, categorias_id
 
         const {nome, preco, quantidade, fabricante_id, categorias_id}  = req.body
 

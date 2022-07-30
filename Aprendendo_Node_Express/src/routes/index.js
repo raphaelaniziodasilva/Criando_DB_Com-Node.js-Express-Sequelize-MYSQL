@@ -11,6 +11,7 @@ const produtoControler = require("../controllers/protudosControllers")
 // importando o usuariosControler que esta no arquivo usuarioControllers.js
 const usuariosControler = require("../controllers/usuarioControllers")
 
+// importando o loginControler que esta no arquivo loginControllers.js
 const loginControler = require("../controllers/loginControllers")
 
 // importando resquestLog para colocar ele de forma local e insira a resquestLog dentro da rota desejada para dizer qual rota ela esta acessando
@@ -25,12 +26,18 @@ const usuarioCreateValidation = require("../validations/usuarios/creat")
 // importando a validação de usuarios para colocar ele de forma local, insira o usuarioCreateValidation dentro da rota desejada antes do controller para poder validar as informações
 const loginCreateValidation = require("../validations/login/login")
 
+// imortando a autenticação do usuario para que so ele possa acessar a rota autenticada, insira o auth dentro da rota desejada antes do controller para poder autenticar 
+const authentication = require("../middlewares/auth")
+
 // ativar o recurso de rotas para poder criar novas rotas neste arquivo
 const routes = express.Router() 
 
 
-// criar uma rota para cadastrar protudos usaremos o metodo post: chamando o nosso produtoControler e acessando o metodo cadastrarProduto
-routes.post("/produtos", produtoControler.cadastrarProduto)
+/* criar uma rota para cadastrar protudos usaremos o metodo post: chamando o nosso produtoControler e acessando o metodo cadastrarProduto
+Adicionando a autenticação, primero ele vai ver se existe essa autenticação, se não ele não entra no cadastro de produtos
+Vamos enviar o codigo de autorização para poder fazer a autenticação, va para pasta de middlewas no arquivo handleError e monte a estrutura de UnauthorizedError
+*/
+routes.post("/produtos", authentication, produtoControler.cadastrarProduto)
 
 // criar uma rota para listar protudos usaremos o metodo get: chamando o nosso produtoControler e acessando o metodo listaDeProdutos   
 routes.get("/produtos", requestLog, bloqueio, produtoControler.listarProdutos)
