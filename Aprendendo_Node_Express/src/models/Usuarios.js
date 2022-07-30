@@ -1,5 +1,7 @@
 /* Validação de dados, quando estamos falando de back-end onde vamos receber informações para poder cadastrar no banco de dados para poder processar essas informações e elas precisam estar corretas ou elas precisam ser enviadas nas requests. 
+
 É como podemos trazer essas validações e fornercer erros caso não seja montada a request da forma que a gente precisa. 
+
 Vamos fazer a validação de dados da tabela Usuarios, vamos começar pelas rotas
 */
 

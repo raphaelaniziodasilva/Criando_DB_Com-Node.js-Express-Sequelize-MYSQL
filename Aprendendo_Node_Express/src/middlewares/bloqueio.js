@@ -14,6 +14,7 @@ module.exports = (req, res, next) => {
     next()
 
     /* então o middleware e justamente o nosso segurança da balada que e o segurança do nosso sistema, ele que vai permitir passar ou não, fazer o log ou não, fazer um controle ou não, dentro da nossa estrutura. Antes de chegar no controler, chegou no controle ja esta certo para poder ser processado.
+    
     O middleware serve para agir antes do controler para poder criar esses tipos de logicas
     */
 

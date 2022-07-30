@@ -3,6 +3,7 @@
 // O sequelize criou alguns metodos para nos ajudar no relacionamento que são: belongsTo, hasMany, hasOne e belongsToMany
 
 //para cada modelo criado na pasta models eu vou ter que importar ele aqui
+
 // importando os models
 const CategoriaProduto = require("./CategoriaProduto")
 const Categorias = require("./Categorias")
@@ -21,8 +22,10 @@ Fabricantes.hasMany(Produtos, {
     foreignKey: "fabricante_id" //  aqui a foreignKey se mantém a mesma 
 
     /* vamos precisar alterar a estrutura de cadastrar produto que esta no arquivo controllers.js para poder ter acesso a ele e dizer que esse produto pertence a um fabricante
-    quando eu for listar os produtos eu vou querer ver as informções do fabricante:
-    vamos precisar alterar a estrutura de listar produto que esta no arquivo controllers.js para poder ter acesso e mostrar as informações do fabricante
+
+    Quando eu for listar os produtos eu vou querer ver as informções do fabricante:
+
+    Vamos precisar alterar a estrutura de listar produto que esta no arquivo controllers.js para poder ter acesso e mostrar as informações do fabricante
     */
 })
 
@@ -37,16 +40,22 @@ Categorias.belongsToMany(Produtos, {
     
     /* 
     Vamos para o arquivo controler, vamos especificar a categoria e dizer qual produto essa categoria pertence.
+
     Porém a categoria_Id não faz parte da tabela produtos.
+
     O sequelize vai nos dar o que se chama de special metodos, que são uma serie de metodos para poder lidar com as tabelas intermediarias sem exatamente ter que acessá-las de uma maneira direta pelo model.
+    
     EX: eu posso a partir do produto pegar uma categoria a partir do model de produto sem ter que especificar a minha tabela intermediaria
+
     Utilizar a função: set, que ela vai setar uma informação la dentro, vamos setar a informação categorias_id em cadastrar produtos
+
     Para ter acesso a essas informações da categoria que ja foi cadastrada, vamos usar um include dentro de listar produtos
     */
 
 })
 
 // precisamos exportar o objeto, toda vez que eu for importar vou precisar importar os objetos por aqui, poque eles já vão ter feito a associação
+
 // para cada modelo criado na pasta models eu vou ter exportar ele aqui
 module.exports = {
     Fabricantes,

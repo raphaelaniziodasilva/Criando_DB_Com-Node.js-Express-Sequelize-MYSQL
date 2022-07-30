@@ -1,13 +1,16 @@
 /* Toda vez que a gente for fazer o processo de validação, ela precisa devolver algum erro para o úsuario quando tiver feio essa request. 
+
 Vamos montar essa função que vai pegar o erro e quando acontecer esse o erro e vai devolver como resposta. Ainda não e a validação
 */
 
 // importando express-jwt
 const UnauthorizedError = require("express-jwt")
+
 // importando express-validation
 const { ValidationError } = require("express-validation")
 
 // exportando a função, aqui só vai cair qualquer coisa de erro
+
 // error: toda vez que for gerado um novo erro, ele vai ser passado para dentro dessa nossa função por meio desse parametro, e ele vai analisar e decidir o que vai acontecer 
 module.exports = (error, req, res, next) => {
 

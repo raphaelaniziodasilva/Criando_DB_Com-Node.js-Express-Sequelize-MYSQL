@@ -7,7 +7,7 @@ const Sequelize = require("sequelize");
 
 const DB_NAME = "loja"; // nome do banco de dados tem que ser igual ao banco que criei no MYSQL
 const DB_USER = "root"; // usuario. O nome do usuario tem que ser igual ao que foi criado no MYSQL quando foi feito a instalação
-const DB_PASS = "Vaizards1$"; // senha do meu root do MYSQL
+const DB_PASS = ""; // senha do meu root do MYSQL
 const DB_CONFIG = { // informações sobre o banco de dados 
     dialect: "mysql", // modelo do banco de dados que esta sendo utilizado
     host: "localhost", // url para agente se conectar como estamos usando um banco local usamos o localhost
@@ -22,6 +22,7 @@ const DB_CONFIG = { // informações sobre o banco de dados
 let db = {}; // o objeto esta em let porque vamos precisar modificar esse objeto. Esse objeto para guardar a conexão do banco de dados, a partir desse objeto vamos poder fazer qualquer coisa em relação ao nosso banco de dados
 
 // vamos criar uma estrutura para poder validar se deu certo a nossa conexão
+
 // tratando o erro
 try {
     // O objeto db ele vai ser igual a uma nova conexão dentro do nosso de dados e para isso agente vai utilizar o sequelize que foi importado ele vai vir em formato de classe onde vamos criar como se fosse um objeto novo, ja com essa conexão para a gente poder trabalhar com ela
@@ -32,7 +33,9 @@ try {
 }
 
 // quinto: vamos testar para ver se conseguimos nos conectar corretamente, o Sequelize vai nos ajudar a partir desse db, ele vai deixar método chamado authenticate que vai dizer se esta conectado ou não. vai fazer uma query de exemplo, uma query de teste dentro do nosso banco.
+
 // vamos criar uma função para testar se tem conexão 
+
 // para trabalhar com banco de dados a maioria das funções são assincronas para que possamos usar o poder do paralelismo
 
 async function hasConection(){

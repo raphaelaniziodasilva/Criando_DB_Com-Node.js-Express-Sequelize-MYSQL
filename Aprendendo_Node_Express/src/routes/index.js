@@ -34,7 +34,9 @@ const routes = express.Router()
 
 
 /* criar uma rota para cadastrar protudos usaremos o metodo post: chamando o nosso produtoControler e acessando o metodo cadastrarProduto
+
 Adicionando a autenticação, primero ele vai ver se existe essa autenticação, se não ele não entra no cadastro de produtos
+
 Vamos enviar o codigo de autorização para poder fazer a autenticação, va para pasta de middlewas no arquivo handleError e monte a estrutura de UnauthorizedError
 */
 routes.post("/produtos", authentication, produtoControler.cadastrarProduto)
@@ -50,6 +52,7 @@ routes.put("/produtos/:id", produtoControler.atualizarProduto)
 
 
 // VAMOS FAZER O REGISTRO DE USUARIOS para que a gente possa validar e dar essas informações para quem estiver consumindo a Api
+
 // criar uma rota para registrar usauarios usaremos o metodo post: chamando o nosso usuariosControler e acessando o metodo registro
 routes.post("/usuarios", requestLog, usuarioCreateValidation, usuariosControler.registro)
 

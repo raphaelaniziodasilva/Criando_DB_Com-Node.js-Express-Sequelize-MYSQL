@@ -3,14 +3,16 @@
 // importando a conexão com o banco de dados
 const db = require("../database/index")
 
-
 // A partir do sequelize aqui vamos precisar desestruturar o cara chamado DataTypes é ele que vai ter os dados "depara" que vai fazer o sequelize entender os type se e inteiro, real e etc..
+
 // importando os type: tipos de sequelize
 const { DataTypes } = require("sequelize")
 const Fabricantes = require("./Fabricantes")
 
 // vamos começar a criação do nosso modelo, criar uma constante chamada Produtos que e o mesmo nome do nosso modelo, arquivo
+
 // vamos utilizar a partir do nosso banco de dados db, uma função chamada "define" e ela que vai criar de fato a nossa estrutura. O "define" vai explicar para o Sequelize que existe essa tabela.
+
 // Vamos criar um modelo baseado na nossa tabela que esta no MYSQL a partir dessa função define. Ela vai receber três parâmetros o primeiro é o nome do nosso modelo, o nome: "Produtos" que a gente vai chamar quando precisar fazer qualquer operação dentro dessa tabela.
 
 const Produtos = db.define("Produtos", {
@@ -45,11 +47,13 @@ const Produtos = db.define("Produtos", {
             key: "id" // id da tabela fabricantes 
             
             // Vamos precisar montar essas informações, dizer especificamente como que essas tabelas: produtos e fabricantes se relacionam
+
             // cire um arquivo index.js e faça o relacionamento das tabelas
         }
     },
   
     // aqui temos as colunas de time steamp: Usamos essas duas colunas para poder controlar quando foi criado algum produto e quando foi a sua ultima atualização.
+    
     // Essas duas colunas createdAt e updatedAt é o que o sequelize vai esperar por padrão e ele vai preenchê-las automaticamente. Para isso o nome dessas duas colunas tem que ser createdAt e updatedAt
 
     createdAt: { // createdAt = coluna

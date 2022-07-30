@@ -12,10 +12,13 @@ const usuariosControler = {
         // desestruturando o objeto
         /* 
         sempre quando a gente vai salvar algum usuario que envolve senha, é um dado muito sensivvel. Não podemos salvar por extenso a gente salva uma senha CRIPTOGRAFADA.
+
         Vamos usar o bcrypt para criptografar a nossa senha e a gente tem um pouco de segurança dentro do nosso sistema.
+
         O bcrypt tem dois métodos praticamente, que e um chamado de hash sync que vai gerar hash enquanto vamos ter um comparesync quando a gente quiser descobrir o que a senha qual a pessoa digitou é igual ao hash uma sequencia de caracteres que a gente tenha salvo no banco.
         
         Vamos ter que instalar na nossa maquina o bcryptjs: use a linha de comando npm install bcryptjs     
+        
         Para gerar a nossa estrutura, a nossa senha basta a gente importar o bcrypt aqui no nosso modelo
         */
         const {nome, email, senha} = req.body
@@ -32,9 +35,11 @@ const usuariosControler = {
         return res.status(201).json(newUsuario)
         // agora va para o insomnia montar a request cadastro de usuario
         /*
-        Para não deixar cadastrar nehum campo que esteja vazio no banco de dados, Vamos ter que fazer a validação de todos os dados, para nos ajudar com essas validações vamos usar o Express Validation que é uma bliblioteca que usa uma outra bliblioteca para poder validar.
+        Para não deixar cadastrar nehum campo que esteja vazio no banco de dados, Vamos ter que fazer a validação de todos os dados, para nos ajudar com essas validações vamos usar o Express 
+        Validation que é uma bliblioteca que usa uma outra bliblioteca para poder validar.
 
         O express validation vai criar um middlewar para a gente para que possa ser mais simples todo esse processo de validação. Vamos usar o Joy que é uma bliblioteca extremamente famosa.
+        
         No site do joy, Joy.dev/api/ e aonde tem toda a estrutura de como a gente pode validar cada coisa em si, porém precisamos primeiro montar a estrutura de validaçãoe e precisamos montar também a estrutura de error. Temos que instalar o Express validation que ja vem com o Joy junto
 
         Vamos ter que instalar na nossa maquina o Express validation que ja vem com o Joy: use a linha de comando: npm i express-validation --save  

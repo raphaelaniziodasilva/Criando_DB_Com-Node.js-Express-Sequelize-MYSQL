@@ -54,10 +54,12 @@ const produtoControler = {
 
 
     // vamos listar todos os produtos que ja foram cadastrados, vamos usar a função assincrona
+
     // essa e uma outra maneira de criar função assincrona
     listarProdutos: async (req, res) => {
 
        // vamos criar uma variavel para armazenar as informações vai ser igual a await porque é uma promisse 
+
        // o metodo findAll() vai procurar todos os produtos dentro da tabela
 
        // vamos precisar alterar findAll e incluir as informações que ele tem relacionado com fabricantes
@@ -135,6 +137,7 @@ const produtoControler = {
             }
 
             // Vou atualizar so o nome não quero atualizar o preço e nem a quantidade
+            
             // preço e quantidade que não vai ser atualizado, quando não mandamos nehuma informação o JS vai tratar como undefined, e o sequelize tem uma inteligencia que se a informação que esta passando for undefined ele não vai alterar a propriedade original dentro do banco de dados. Seu eu so mudar o nome so vai ser atualizado o nome
         })
 

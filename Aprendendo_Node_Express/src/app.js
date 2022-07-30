@@ -1,4 +1,5 @@
 // precisamos criar um servidor para que possamos utilizar a blibioteca Express
+
 // importar o express
 const express = require("express")
 
@@ -6,6 +7,7 @@ const express = require("express")
 const routes = require("./routes/index")
 
 /* importando resquestLog para colocar ele de forma global para que ele possa ser acessado por todas as rotas, agora vou colocar ele antes do app.use(routes)
+
 const requestLog = require("./middlewares/requestLog")
 */
 
